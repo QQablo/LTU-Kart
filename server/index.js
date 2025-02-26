@@ -3,6 +3,8 @@ const { createServer } = require("node:http");
 const { join } = require("node:path");
 const { Server } = require("socket.io");
 const session = require("express-session");
+const cors = require("cors");
+const { setupSocket } = require("./socket");
 
 const port = process.env.PORT || 3000;
 
@@ -15,7 +17,9 @@ const sessionMiddleware = session({
   saveUninitialized: true,
 });
 
+app.use(cors({ origin: "*" }));
 app.use(sessionMiddleware);
+app.use(express.static("public"));
 
 app.get("/", (req, res) => {
   res.sendFile(join(__dirname, "index.html"));
@@ -27,8 +31,14 @@ app.post("/incr", (req, res) => {
   res.status(200).end("" + session.count);
 });
 
-const io = new Server(httpServer);
+const io = new Server(httpServer, {
+  cors: {
+    origin: "*",
+  },
+});
+
+setupSocket(io);
 
 httpServer.listen(port, () => {
-  console.log(`application is running at: http://localhost:${port}`);
+  console.log(`Server running on http://localhost:${port}`);
 });
