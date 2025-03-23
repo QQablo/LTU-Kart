@@ -25,7 +25,7 @@ Follow the steps below to set up the LTU-Kart project on your local machine.
 To get started, clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/your-username/LTU-Kart.git
+git clone https://github.com/QQablo/LTU-Kart.git
 cd LTU-Kart
 ```
 
