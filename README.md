@@ -30,10 +30,10 @@ cd LTU-Kart
 ```
 
 ### Install Backend Dependencies
-The server runs on **Node.js** with **Socket.IO**. Navigate to the backend folder and install dependencies:
+The server runs on **Node.js** with **Socket.IO**. Navigate to the server folder and install dependencies:
 
 ```bash
-cd backend
+cd server
 npm install
 ```
 
@@ -49,7 +49,7 @@ npm install
 Run the following command to start the **Node.js** WebSocket server:
 
 ```bash
-cd ../backend
+cd ../server
 node server.js
 ```
 
